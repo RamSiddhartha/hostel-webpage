@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NITW Hostel Portal</title>
+
+    <style>
+
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Inter', sans-serif;
+            background:#f8fafc;
+            color:#334155;
+            overflow-x:hidden;
+        }
+
+
+        .navbar{
+            width:100%;
+            height:70px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding-left:40px;
+            padding-right:40px;
+            position:fixed;
+            top:0px;
+            left:0px;
+            background:#ffffff;
+            border-bottom:1px solid #e2e8f0;
+            z-index:1000;
+        }
+
+        .home{
+            font-size:20px;
+            font-weight:bold;
+            color:#1e293b;
+            text-decoration:none;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:50px;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#64748b;
+            font-size:18px;
+        }
+
+
+        .hero{
+            height:100vh;
+            width:100%;
+            background:url("hostel.png");
+            background-size:cover;
+            background-position:center;
+            position:relative;
+            display:flex;
+            align-items:center;
+            padding-left:80px;
+        }
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:100%;
+            background:rgba(30,41,59,0.4);
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+            max-width:650px;
+            color:white;
+        }
+
+        .hero h1{
+            font-size:64px;
+            line-height:72px;
+            margin-bottom:10px;
+        }
+
+        .hero h2{
+            font-size:26px;
+            margin-bottom:20px;
+            font-weight:normal;
+        }
+
+        .hero p{
+            font-size:20px;
+            margin-bottom:30px;
+            color:#e2e8f0;
+        }
+
+
+        .main-section{
+            display:flex;
+            padding:110px 60px;
+            gap:40px;
+            align-items:flex-start;
+        }
+
+
+
+        .updates{
+            width:40%;
+        }
+
+        .updates h2{
+            font-size:1.5rem;
+            margin-bottom:10px;
+            color:#64748b;
+        }
+
+        .updates p{
+            margin-bottom:20px;
+        }
+
+        .update-box{
+            height:200px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            background:#ffffff;
+            border:1px solid #e2e8f0;
+            border-radius:12px;
+            padding:20px;
+        }
+
+        .update-item{
+            padding:10px 0px;
+            border-bottom:1px solid #f1f5f9;
+            font-size:0.95rem;
+        }
+
+        .update-item:last-child{
+            border-bottom:none;
+        }
+
+        /* RIGHT */
+
+        .features-section{
+            width:60%;
+            text-align:center;
+        }
+
+        .features-section h2{
+            font-size:1.5rem;
+            margin-bottom:10px;
+            color:#64748b;
+        }
+
+        .features-section p{
+            margin-bottom:40px;
+        }
+
+        .features{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            width:240px;
+            height:200px;
+            background:#ffffff;
+            border:1px solid #e2e8f0;
+            border-radius:12px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            box-shadow:0px 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .icon{
+            font-size:36px;
+            margin-bottom:12px;
+        }
+
+        .card-title{
+            font-size:16px;
+            font-weight:600;
+        }
+
+
+
+        .extra{
+            padding:80px 40px;
+            display:flex;
+            justify-content:center;
+            gap:60px;
+            flex-wrap:wrap;
+        }
+
+        .box{
+            width:300px;
+            padding:30px;
+            border-radius:12px;
+            background:#ffffff;
+            border:1px solid #e2e8f0;
+        }
+
+
+
+        .info{
+            display:flex;
+            justify-content:space-around;
+            padding:60px;
+            background:#ffffff;
+            text-align:center;
+        }
+
+
+
+        .footer{
+            padding:30px;
+            text-align:center;
+            background:#1e293b;
+            color:white;
+        }
+
+        /* POPUP */
+
+        .popup{
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.5);
+            display:none;
+            justify-content:center;
+            align-items:center;
+            z-index:2000;
+        }
+
+        .popup-box{
+            width:300px;
+            padding:30px;
+            background:#ffffff;
+            border-radius:12px;
+            text-align:center;
+        }
+
+        .popup button{
+            margin-top:20px;
+            padding:10px 20px;
+            border:none;
+            background:#1e293b;
+            color:white;
+            cursor:pointer;
+            border-radius:6px;
+        }
+
+
+        @media(max-width:900px){
+
+            .hero{
+                padding:40px;
+            }
+
+            .hero h1{
+                font-size:40px;
+                line-height:50px;
+            }
+
+            .main-section{
+                flex-direction:column;
+            }
+
+            .updates, .features-section{
+                width:100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="navbar">
+        <a href="#" class="home">Home</a>
+
+        <div class="nav-links">
+            <a href="room.html">Allocation</a>
+            <a href="Mess.html">Mess</a>
+            <a href="new.html">Complaints</a>
+        </div>
+    </div>
+
+
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Live Better,<br>Stay Smarter</h1>
+            <h2>Hostel Management System</h2>
+            <p>Experience seamless hostel life with smart services, instant access, and smooth management</p>
+        </div>
+    </div>
+
+
+    <div class="main-section">
+
+        <div class="updates">
+            <h2>Live Updates</h2>
+            <p>Stay informed with latest updates</p>
+
+            <div class="update-box">
+                <div class="update-item">Lift 2 under maintenance till evening</div>
+                <div class="update-item">Mess menu updated for this week</div>
+                <div class="update-item">Water supply maintenance scheduled tomorrow</div>
+            </div>
+        </div>
+        <div class="features-section">
+            <h2>Everything You Need</h2>
+            <p>Designed for speed, comfort, and simplicity</p>
+
+            <div class="features">
+
+<div class="card" onclick="window.location.href='room.html'">
+    <div class="icon">▢</div>
+    <div class="card-title">Room Allocation</div>
+</div>
+
+<div class="card" onclick="window.location.href='mess.html'">
+    <div class="icon">≡</div>
+    <div class="card-title">Mess Services</div>
+</div>
+
+<div class="card" onclick="window.location.href='new.html'">
+    <div class="icon">!</div>
+    <div class="card-title">Raise Issues</div>
+</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="extra">
+
+        <div class="box">
+            <h3>Quick Access</h3>
+            <p>Navigate hostel services instantly with minimal effort and maximum efficiency.</p>
+        </div>
+
+        <div class="box">
+            <h3>Smart System</h3>
+            <p>Optimized workflows ensure faster response and better management.</p>
+        </div>
+
+        <div class="box">
+            <h3>Real-Time Updates</h3>
+            <p>Stay informed with live notifications and important updates.</p>
+        </div>
+
+    </div>
+
+
+    <div class="info">
+        <div><b>Fast Access</b><br>Instant Services</div>
+        <div><b>Secure</b><br>Reliable System</div>
+        <div><b>Smart Living</b><br>Modern Experience</div>
+    </div>
+
+
+    <div class="footer">
+        © NIT Warangal Hostel Portal
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-box">
+            <h3 id="popupText"></h3>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+
+        function openPopup(text){
+            document.getElementById("popupText").innerText = text;
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup(){
+            document.getElementById("popup").style.display = "none";
+        }
+
+    </script>
+
+</body>
+</html>

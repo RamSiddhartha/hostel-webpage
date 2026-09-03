@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Grievance Support Portal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="new.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="Landing-.html">Home</a></li>
+        <li><a href="room.html">Allocation</a></li>
+        <li><a href="Mess.html">Mess</a></li>
+        <li><a href="new.html">Complaints</a></li>
+    </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Grievance Portal</h1>
+        <p>Your issues, our priority. Register a complaint below.</p>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-card">
+                <span class="stat-value">24/7</span>
+                <span class="stat-label">Response Active</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="resolved-count">...</span>
+                <span class="stat-label">Grievances Solved</span>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Select Category</h2>
+        </div>
+
+        <div class="selector-section">
+            <button class="type" data-type="Carpentry"><i data-lucide="hammer"></i><span>Carpentry</span></button>
+            <button class="type" data-type="Electrician"><i data-lucide="zap"></i><span>Electrician</span></button>
+            <button class="type" data-type="Plumbing"><i data-lucide="droplets"></i><span>Plumbing</span></button>
+            <button class="type" data-type="Medical"><i data-lucide="heart-pulse"></i><span>Medical</span></button>
+            <button class="type" data-type="Cleaners"><i data-lucide="brush"></i><span>Cleaners</span></button>
+            <button class="type" data-type="Fire Hazard"><i data-lucide="flame"></i><span>Fire Hazard</span></button>
+            <button class="type" data-type="Management"><i data-lucide="briefcase"></i><span>Management</span></button>
+            <button class="type" data-type="Lift Issues"><i data-lucide="arrow-up-down"></i><span>Lift Issues</span></button>
+        </div>
+
+        <div class="main-content">
+            <div class="info-card">
+                <h3>Request Process</h3>
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div><strong>Lodge Complaint</strong><p style="font-size: 0.85rem; color: var(--text-muted);">Fill in room and issue details.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div><strong>Get Contact</strong><p style="font-size: 0.85rem; color: var(--text-muted);">View the duty technician's number.</p></div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div><strong>Resolution</strong><p style="font-size: 0.85rem; color: var(--text-muted);">Staff will visit your room shortly.</p></div>
+                </div>
+            </div>
+
+            <div class="feed-card">
+                <h3>Live Activity</h3>
+                <div id="activity-list">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Fetching updates...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="darkened" class="darkened">
+        <div class="form-container">
+            <button id="close-btn" class="close-x">&times;</button>
+            <form id="form">
+                <h2 id="formTitle" style="margin-bottom: 25px;">Submit Request</h2>
+                <input type="hidden" id="type">
+                <div style="margin-bottom:15px;">
+                    <label class="field-label">Room Number</label>
+                    <input type="text" id="room" placeholder="e.g. B-102" required>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label class="field-label">Issue Details</label>
+                    <textarea id="desc" rows="4" placeholder="Describe the problem..." required></textarea>
+                </div>
+                <button id="submit-button" type="submit">
+                    <span id="btnText">Submit Grievance</span>
+                    <div class="spinner" id="loader"></div>
+                </button>
+            </form>
+
+            <div id="success-screen" class="success-screen" style="display:none;">
+                <i data-lucide="check-circle" class="success-icon"></i>
+                <h2>Successful!</h2>
+                <div class="contact-card">
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:5px;">Technician Contact</p>
+                    <div id="contact-info" class="contact-number"></div>
+                </div>
+                <button onclick="location.reload()" class="close-modal-btn"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="new.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

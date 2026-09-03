@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Room Status</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="Landing-.html">Home</a></li>
+                <li><a href="room.html">Allocation</a></li>
+                <li><a href="Mess.html">Mess</a></li>
+                <li><a href="new.html">Complaints</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-setup-division">
+            <div class="input-group">
+                <input type="text" id="myRoomInput" placeholder="Enter your current room (e.g., A-101)">
+                <button id="setRoomBtn">Set My Room</button>
+            </div>
+            <div id="currentUserDisplay">You haven't set a room yet.</div>
+        </div>
+
+        <div class="container">
+            <h1>Room Availability Status</h1>
+            
+            <select id="floorSelect" autocomplete="off">
+                <option value="default">Select Floor</option>
+                <option value="0">Floor 0 (Ground)</option>
+                <option value="1">Floor 1</option>
+                <option value="2">Floor 2</option>
+                <option value="3">Floor 3</option>
+                <option value="4">Floor 4</option>
+                <option value="5">Floor 5</option>
+                <option value="6">Floor 6</option>
+                <option value="7">Floor 7</option>
+                <option value="8">Floor 8</option>
+                <option value="9">Floor 9</option>
+            </select>
+
+            <div id="defaultView">
+                <h2>Available Room Types</h2>
+                <div class="room-types">
+                    <div class="card">Single Sharing</div>
+                    <div class="card">Double Sharing</div>
+                    <div class="card">Triple Sharing</div>
+                </div>
+            </div>
+
+            <div id="floorView" style="display: none;">
+                <h2 id="floorTitle"></h2>
+                <div class="blocks-container">
+                    <div class="block-section">
+                        <h3>Block A</h3>
+                        <div id="blockA" class="cluster-a"></div>
+                    </div>
+                    <div class="block-section">
+                        <h3>Block B</h3>
+                        <div id="blockB" class="cluster-b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="shiftModal" class="modal">
+            <div class="modal-content">
+                <p id="modalMessage"></p>
+                <div class="modal-actions">
+                    <button id="confirmBtn" class="btn-confirm">Confirm Shift</button>
+                    <button id="cancelBtn" class="btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
